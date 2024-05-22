@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ 	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+ 	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+ 	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui">
+	  
+	<head>
+	    <meta charset="UTF-8"></meta>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	    <title>Home</title>
+	    <link rel="stylesheet" href="resources/css/style.css"></link>
+	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
+	</head>
+	<body>
+	    
+	    <main>
+	        <nav class="menu-lateral">
+	
+	            <div class="btn-expandir">
+	                <i class="bi bi-list" id="btn-exp"></i>
+	            </div>
+	
+	            <ul>
+	                <li class="item-menu ativo">
+	                    <a href="#">
+	                        <span class="icon"><i class="bi bi-house-door"></i></span>
+	                        <span class="txt-link">Home</span>
+	                    </a>
+	                </li>
+	                <li class="item-menu">
+	                    <a href="hospedagem/CadastroHospedagem.xhtml" target="conteudo">
+	                        <span class="icon"><i class="bi bi-building"></i></span>
+	                        <span class="txt-link">Hospedagens</span>
+	                    </a>
+	                </li>
+	                <li class="item-menu">
+	                    <a href="hospede/Teste.xhtml" target="conteudo">
+	                        <span class="icon"><i class="bi bi-calendar3"></i></span>
+	                        <span class="txt-link">Calendário</span>
+	                    </a>
+	                </li>
+	                <li class="item-menu">
+	                    <a href="hospede/Hospede.xhtml" target="conteudo">
+	                        <span class="icon"><i class="bi bi-people"></i></span>
+	                        <span class="txt-link">Hospedes</span>
+	                    </a>
+	                </li>
+	                <li class="item-menu">
+	                    <a href="quarto/Quarto.xhtml" target="conteudo">
+	                        <span class="icon"><i class="bi bi-grid-3x2-gap-fill"></i></span>
+	                        <span class="txt-link">Quartos</span>
+	                    </a>
+	                </li>
+	                <li class="item-menu">
+	                    <a href="tipoQuarto/TipoQuarto.xhtml" target="conteudo">
+	                        <span class="icon"><i class="bi bi-grid-3x2-gap-fill"></i></span>
+	                        <span class="txt-link">Tipos de quartos</span>
+	                    </a>
+	                </li>
+	            </ul>
+	        </nav>
+	
+	        <section>
+	            <iframe name="conteudo"></iframe>
+	        </section>
+	    </main>
+	
+	    <script src="resources/js/menu.js"></script>
+	
+	</body>
+</html>

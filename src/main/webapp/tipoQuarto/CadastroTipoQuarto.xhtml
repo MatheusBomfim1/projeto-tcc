@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+ 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+ 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+ 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Tipos de quartos</title>
+	</h:head>
+
+	<f:metadata>
+		<f:viewParam name="tipoQuarto" value="#{cadastroTipoQuartoBean.tipoQuarto}"/>
+	</f:metadata>
+	
+	<h:body>   
+
+    	<h1>Cadastro</h1>
+    	
+    	<h:form id="frmCadastro">
+
+    		<p:messages id="messages" showDetail="false" closable="true">
+        		<p:autoUpdate />
+    		</p:messages>    	
+    	
+
+
+			<p:outputLabel value="Id" for="id"/>
+		    <p:inputText id="id" size="20" maxlength="20"
+		    	value="#{cadastroTipoQuartoBean.tipoQuarto.codigoTipoQuarto}" 
+		    	readonly="true"/>			    
+
+			<br></br>
+		
+		    <p:outputLabel value="Descricao" for="descricao"/>
+	  	    <h:panelGroup>
+				<p:inputText id="descricao" size="60" maxlength="80" required="true" 
+			    	validatorMessage="A descrição é obrigatório."
+			    	value="#{cadastroTipoQuartoBean.tipoQuarto.descricao}"/>	
+			     <p:watermark for="descricao" value="O NOME deve ser da pessoa e não do CARGO/FUNÇÃO."/>  	
+			</h:panelGroup>	   
+			
+			<br></br>
+			
+			<p:outputLabel value="Diaria" for="diaria"/>
+	  	    <h:panelGroup>
+				<p:inputText id="diaria" size="60" maxlength="80" required="true" 
+			    	validatorMessage="A diária é obrigatório."
+			    	value="#{cadastroTipoQuartoBean.tipoQuarto.diaria}"/>	
+			     <p:watermark for="diaria" value="A diaria deve ser da pessoa e não do CARGO/FUNÇÃO."/>  	
+			</h:panelGroup>	   
+			
+			<br></br>
+			
+			
+			
+			<p:toolbarGroup>
+	    		<p:commandButton value="Salvar" id="botaoSalvar" action="#{cadastroTipoQuartoBean.salvar}" update="frmCadastro" ajax="false"/>
+			</p:toolbarGroup>
+			
+			<p:toolbarGroup>
+	    		<p:commandButton value="Voltar" id="botaoVoltar" action="TipoQuarto.xhtml"/>
+			</p:toolbarGroup>
+
+
+		</h:form>
+	</h:body>
+</html>

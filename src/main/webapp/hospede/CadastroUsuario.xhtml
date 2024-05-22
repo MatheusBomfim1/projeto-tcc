@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+ 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+ 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+ 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Usuario</title>
+	</h:head>
+
+	<f:metadata>
+		<f:viewParam name="usuario" value="#{cadastroUsuarioBean.usuario}"/>
+	</f:metadata>
+	
+	<h:body>   
+
+    	<h1>Usuário do Sistema</h1>
+    	
+    	<h:form id="frmCadastro">
+
+    		<p:messages id="messages" showDetail="false" closable="true">
+        		<p:autoUpdate />
+    		</p:messages>    	
+
+	    	<p:toolbar style="margin-top: 20px">
+	    	
+	    		<p:toolbarGroup>
+	    			<p:commandButton value="Salvar" id="botaoSalvar" icon="pi pi-save"
+	    				action="#{cadastroUsuarioBean.salvar}" update="frmCadastro" ajax="false"/>
+	    			<span class="ui-separator">
+			                <span class="ui-icon ui-icon-grip-dotted-vertical" />
+			        </span>
+
+					<p:button icon="pi pi-search" value="Pesquisar" outcome="/usuario/PesquisaUsuario.xhtml"/>
+				</p:toolbarGroup>
+
+	    	</p:toolbar>	    	
+
+			<p:panelGrid columns="2" id="painel" style="width: 100%" columnClasses="rotulo, campo">
+
+				<p:outputLabel value="Id" for="id"/>
+			    <p:inputText id="id" size="20" maxlength="20"
+			    	value="#{cadastroUsuarioBean.usuario.id}" 
+			    	readonly="true"/>			    
+
+			    <p:outputLabel value="Nome" for="nome"/>
+			    <h:panelGroup>
+				    <p:inputText id="nome" size="60" maxlength="80" required="true" 
+				    	validatorMessage="O nome é obrigatório."
+				       	value="#{cadastroUsuarioBean.usuario.nome}"/>	
+				     <p:watermark for="nome" value="O NOME deve ser da pessoa e não do CARGO/FUNÇÃO."/>  	
+			   </h:panelGroup>	   
+
+			</p:panelGrid>
+
+		</h:form>
+	</h:body>
+</html>

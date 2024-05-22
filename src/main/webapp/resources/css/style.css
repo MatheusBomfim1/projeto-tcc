@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body{
+    height: 100vh;
+}
+
+main{
+    width: 100%;
+    height: 100%;
+    background-color: aquamarine;
+    display: flex;
+}
+
+main section{
+    flex: 1;
+    background-color: blue;
+    margin-top: 60px;
+    margin-left: 83px;
+    overflow: hidden; /* Retirando barra de rolagem*/
+}
+
+main section iframe{
+    width: 100%;
+    height: 100%;
+    background-color: #DCDCDC;
+    border:0px;
+}
+
+nav.menu-lateral{
+    width: 80px;
+    height: 100%;
+    background-color: darkslategray;
+    padding: 40px 0 40px 0%;
+    box-shadow: 3px 0 0 cadetblue;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: .5s;
+}
+
+nav.menu-lateral.expandir{
+    width: 270px;
+}
+
+.btn-expandir{
+    width: 100%;
+    padding-left: 23px;
+}
+
+.btn-expandir > i{
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+ul{
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.item-menu{
+    transition: .2s;
+}
+
+ul li.ativo{
+    background-color: cadetblue;
+}
+
+ul li.item-menu:hover{
+    background: cadetblue;
+}
+
+ul li.item-menu a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 15px;
+    display: flex;
+    line-height: 40px;
+    margin-bottom: 20px;
+}
+
+ul li.item-menu a .txt-link{
+    margin-left: 70px;
+    transition: .5s;
+    opacity: 0;
+}
+
+nav.menu-lateral.expandir .txt-link{
+    margin-left: 40px;
+    opacity: 1;
+}
+
+ul li.item-menu a .icon > i{
+    font-size: 25px;
+    margin-left: 8px;
+}

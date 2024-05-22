@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+ 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+ 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+ 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Usuario</title>
+	</h:head>
+	
+	<h:body>   
+
+		<h1>Hospedes</h1>
+
+		<h:form id="frmPesquisa">
+			<p:messages id="messages" showDetail="false" closable="true">
+        		<p:autoUpdate />
+    		</p:messages>
+
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:commandButton icon="pi pi-plus" value="Novo" id="botaoNovo" 
+						action="/hospede/CadastroHospede.xhtml" update="hospedesTable"
+						process="frmPesquisa"/>
+				</p:toolbarGroup>
+			</p:toolbar>
+			
+			<p:dataTable id="hospedesTable" var="hospede" value="#{pesquisaHospedeBean.hospedes}" 
+				lazy="false"
+	    		style="margin-top: 20px" emptyMessage="Nenhuma unidade encontrada." rows="10"
+	    		paginator="true" paginatorAlwaysVisible="true" paginatorPosition="bottom"
+	    		rowsPerPageTemplate="5,10,15">		
+
+				<p:column headerText="Id" style="width: 40px; text-align: center">
+					<h:outputText value="#{hospede.id}" />
+				</p:column>	
+
+				<p:column headerText="Nome" style="width: 150px; text-align: left"
+					filterBy="#{hospede.nome}">
+					<h:outputText value="#{hospede.nome}" />
+				</p:column>	
+				
+				<p:column headerText="Cpf" style="width: 150px; text-align: left"
+					filterBy="#{hospede.cpf}">
+					<h:outputText value="#{hospede.cpf}" />
+				</p:column>
+				
+				<p:column headerText="Data Nascimento" style="width: 150px; text-align: left"
+					filterBy="#{hospede.dataNascimento}">
+					<h:outputText value="#{hospede.dataNascimento}" />
+				</p:column>
+
+				<p:column headerText="Operações" style="width: 40px; text-align: center">
+					<p:button outcome="CadastroHospede" icon="pi pi-pencil" title="Editar">
+						<f:param name="hospede" value="#{hospede.id}" />
+					</p:button>
+
+					<p:commandButton icon="pi pi-trash"  title="Excluir"
+						onclick="PF('confirmacaoExclusao').show();"
+						process="@this"	>
+						<f:setPropertyActionListener
+							target="#{pesquisaHospedeBean.hospede}"
+							value="#{hospede}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+
+			<p:confirmDialog id="confirmacaoExclusaoDialog"
+				widgetVar="confirmacaoExclusao"
+				message="Tem certeza que deseja excluir o usuário #{pesquisaHospedeBean.hospede.nome}?"
+				header="Exclusão de hospede" severity="alert">
+				<p:button icon="pi pi-thumbs-down" value="Não"
+					onclick="PF('confirmacaoExclusao').hide(); return false;" />
+				<p:commandButton icon="pi pi-thumbs-up" value="Sim" 
+				    update=":frmPesquisa:hospedesTable"
+					onclick="PF('confirmacaoExclusao').hide();"
+					action="#{pesquisaHospedeBean.excluir}" />
+			</p:confirmDialog>	
+			
+		</h:form>
+	</h:body>
+</html>
